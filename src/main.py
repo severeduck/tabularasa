@@ -1,20 +1,11 @@
 import random
 
+import Move
+import Board
+
 # Constants for the pieces
 EMPTY, PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING = '.', 'P', 'N', 'B', 'R', 'Q', 'K'
 
-# Initialize a standard 8x8 chess board with starting positions
-def initialize_board():
-    return [
-        [ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK],
-        [PAWN] * 8,
-        [EMPTY] * 8,
-        [EMPTY] * 8,
-        [EMPTY] * 8,
-        [EMPTY] * 8,
-        [PAWN] * 8,
-        [ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK]
-    ]
 
 # Placeholder for the AI move selection logic
 def select_move(legal_moves):
@@ -51,14 +42,6 @@ def game_loop(board):
         player = 'black' if player == 'white' else 'white'
 
 # Define a simple structure for a move
-class Move:
-    def __init__(self, from_square, to_square):
-        self.from_square = from_square
-        self.to_square = to_square
-
-    def __repr__(self):
-        return f"{self.from_square}->{self.to_square}"
-
 # Add more detail to the move generation logic
 def generate_legal_moves(board, player):
     # Simplified example: generate moves for pawns only
@@ -96,7 +79,7 @@ def reinforcement_learning_loop():
     # Initialize AI model here
 
     for episode in range(1000):  # Number of games to play
-        board = initialize_board()
+        board = Board()
         game_loop(board)
 
         # Placeholder for updating AI model based on game outcome
@@ -105,6 +88,7 @@ def reinforcement_learning_loop():
             print(f"Episode {episode}: AI is learning...")
 
             # The main function to start the chess engine
+            
 def main():
     reinforcement_learning_loop()
 
